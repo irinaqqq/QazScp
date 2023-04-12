@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: black;
+    }
+  
+    label {
+      margin-right: 10px;
+    }
+  
+    input[type="text"] {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      width: 300px;
+    }
+  
+    input[type="submit"] {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      background-image: linear-gradient(to bottom, #000000, #721515);
+      color: #fff;
+      cursor: pointer;
+    }
+  
+    input[type="submit"]:hover {
+      background-color: #0062cc;
+    }
+  
+    /* Table styles */
+    .employees {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: black;
+      
+    }
+
+  
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      
+    }
+  
+    th {
+      background-image: linear-gradient(to bottom, #000000, #721515);
+      color: #fff;
+      border-radius: 10px;
+    }
+  
+    /* Download button styles */
+    form[action="{% url 'download' %}"] {
+      margin-top: 20px;
+      text-align: center;
+    }
+  
+    input[type="submit"] {
+      margin: 0 auto;
+    }
+  
+    body {
+      background-image: url('https://ixbt.online/live/images/original/16/66/51/2020/09/20/f01ff809da.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    h2, button {
+        text-align: center;
+        background-color: #333;
+        display: inline-block;
+        width: 30%;
+        margin-left: 35%;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 10px;
+
+    }
+    button{
+        margin-top: 20px;
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+  </style>
+  
+
+  <button id="show-form-button">Add Employee</button>
+  <button id="hide-form-button" style="display:none;">Hide Form</button>
+
+  <div id="employee-form-container" style="display: none;">
+    <form method="post">
+      {% csrf_token %}
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" name="full_name" required>
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="phone_number" name="phone_number" required>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+      <input type="submit" value="Add">
+    </form>
+  </div>
+  
+  <script>
+    const showFormButton = document.getElementById('show-form-button');
+    const formContainer = document.getElementById('employee-form-container');
+    const hideFormButton = document.getElementById('hide-form-button');
+  
+    showFormButton.addEventListener('click', () => {
+      formContainer.style.display = 'block';
+      hideFormButton.style.display = 'inline-block';
+      showFormButton.style.display = 'none';
+    });
+    hideFormButton.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+        hideFormButton.style.display = 'none';
+        showFormButton.style.display = 'inline-block';
+      });
+  </script>
+
+  <h2>Employees</h2>
+  <table class="employees">
+    <tr>
+      <th>Full Name</th>
+      <th>Phone Number</th>
+      <th>Address</th>
+    </tr>
+    {% for employee in employees %}
+      <tr>
+        <td>{{ employee.full_name }}</td>
+        <td>{{ employee.phone_number }}</td>
+        <td>{{ employee.address }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <form method="post" action="{% url 'download' %}">
+    {% csrf_token %}
+    <input type="submit" value="Download Encrypted CSV">
+  </form>
+
+{% endblock %}

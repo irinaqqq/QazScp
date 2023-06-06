@@ -110,19 +110,19 @@
   </style>
   
 
-  <button id="show-form-button">Add Employee</button>
-  <button id="hide-form-button" style="display:none;">Hide Form</button>
+  <button id="show-form-button">Қызметкерді қосу</button>
+  <button id="hide-form-button" style="display:none;">Пішінді жасыру</button>
 
   <div id="employee-form-container" style="display: none;">
     <form method="post">
       {% csrf_token %}
-      <label for="full_name">Full Name:</label>
+      <label for="full_name">Толық аты:</label>
       <input type="text" id="full_name" name="full_name" required>
-      <label for="phone_number">Phone Number:</label>
+      <label for="phone_number">Телефон нөмірі:</label>
       <input type="text" id="phone_number" name="phone_number" required>
-      <label for="address">Address:</label>
+      <label for="address">Мекен-жайы:</label>
       <input type="text" id="address" name="address" required>
-      <input type="submit" value="Add">
+      <input type="submit" value="Қосу">
     </form>
   </div>
   
@@ -143,12 +143,12 @@
       });
   </script>
 
-  <h2>Employees</h2>
+  <h2>Қызметкерлер</h2>
   <table class="employees">
     <tr>
-      <th>Full Name</th>
-      <th>Phone Number</th>
-      <th>Address</th>
+      <th>Толық аты</th>
+      <th>Телефон нөмірі</th>
+      <th>Мекен-жайы</th>
     </tr>
     {% for employee in employees %}
       <tr>
@@ -161,7 +161,7 @@
 
   <form method="post" action="{% url 'download' %}">
     {% csrf_token %}
-    <input type="submit" value="Download Encrypted CSV">
+    <input type="submit" value="Шифрланған CSV файлын жүктеп алыңыз">
   </form>
 
 {% endblock %}

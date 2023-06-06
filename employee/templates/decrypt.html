@@ -112,12 +112,11 @@
       }
       
       input[type=file]::before {
-        content: 'Select a file';
+        content: 'Файлды таңдаңыз';
         text-align: center;
         background-image: linear-gradient(to bottom, #000000, #721515);
         display: inline-block;
-        width: 40%;
-        margin-left: 30%;
+        margin-left: 15%;
         color: white;
         font-family: Arial, sans-serif;
         font-size: 20px;
@@ -131,21 +130,21 @@
       }
       
   </style>
-  <h2>Decrypt Employee Information</h2>
+  <h2>Қызметкерлердің деректерін дешифрлау</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" id="file" name="file" required>
-    <input type="submit" value="Decrypt">
+    <input type="submit" value="Дешифрлау">
   </form>
 
   <br><br>
 
-  <h2>Decrypted Employees List</h2>
+  <h2>Қызметкерлердің дешифрланған тізімі</h2>
   <table class="employees">
     <tr>
-      <th>Full Name</th>
-      <th>Phone Number</th>
-      <th>Address</th>
+      <th>Толық аты</th>
+      <th>Телефон нөмірі</th>
+      <th>Мекен-жайы</th>
     </tr>
     {% for employee in employees %}
       <tr>

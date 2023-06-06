@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: black;
+    }
+  
+    label {
+      margin-right: 10px;
+    }
+  
+    input[type="text"] {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      width: 300px;
+    }
+  
+    input[type="submit"] {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      background-image: linear-gradient(to bottom, #000000, #721515);
+      color: #fff;
+      cursor: pointer;
+    }
+  
+    input[type="submit"]:hover {
+      background-color: #0062cc;
+    }
+  
+    /* Table styles */
+    .employees {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: black;
+      
+    }
+
+  
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      
+    }
+  
+    th {
+      background-image: linear-gradient(to bottom, #000000, #721515);
+      color: #fff;
+      border-radius: 10px;
+    }
+  
+    /* Download button styles */
+    form[action="{% url 'download' %}"] {
+      margin-top: 20px;
+      text-align: center;
+    }
+  
+    input[type="submit"] {
+      margin: 0 auto;
+    }
+  
+    body {
+      background-image: url('https://ixbt.online/live/images/original/16/66/51/2020/09/20/f01ff809da.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    form {
+        background-color: rgba(255, 255, 255, 0.8);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    h2, button {
+        text-align: center;
+        background-color: #333;
+        display: inline-block;
+        width: 30%;
+        margin-left: 35%;
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 10px;
+
+    }
+    button{
+        margin-top: 20px;
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+    body {
+        text-align: center;
+        color: black;
+    }
+
+    h1, p, ul {
+        text-align: center;
+        
+    }
+    h1 {
+        background-color: #333;
+        color: white;
+    }
+
+    ul {
+        display: inline-block;
+        list-style-type: none;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+    }
+    .centerized-image {
+        display: block;
+        margin: 0 auto;
+        width: 50px;
+    }
+  </style>
+  <!DOCTYPE html>
+  <html>
+  <head>
+  </head>
+  <body>
+      <h1>SCP - ге қош келдіңіз!</h1>
+      <div class="container">
+      <p>Біздің веб-сайт AES шифрлау схемасын қолдана отырып, қызметкерлер туралы ақпаратты қауіпсіз басқаруға көмектесу үшін жасалған.</p>
+      <p>Біздің ыңғайлы интерфейстің көмегімен сіз:</p>
+      <ul>
+          <li>Жаңа қызметкерлер мен олардың деректерін қосыңыз</li>
+          <li>Дерекқордағы барлық қызметкерлердің тізімін қарау</li>
+          <li>Қызметкер туралы ақпаратты қамтитын шифрланған CSV файлын жүктеп алыңыз</li>
+          <li>CSV файлындағы қызметкер туралы ақпаратты дешифрланыз және қараңыз</li>
+      </ul>
+      <p>Біз қызметкерлердің деректерінің құпиялылығы мен тұтастығын қамтамасыз ету үшін симметриялы кілт криптографиясына негізделген Fernet шифрлау схемасын қолданамыз.</p>
+      <p>Қызметкер туралы ақпаратты жүктеген кезде, ол кездейсоқ жасалған кілт арқылы Fernet арқылы шифрланады. Бұл деректердің шифрын ашуға және оларға қол жеткізуге тек дұрыс кілті бар уәкілетті тұлғалардың ғана қол жеткізуін қамтамасыз етеді.</p>
+      <p>Fernet шифрлау схемасы сенімді қауіпсіздік мүмкіндіктері мен деректерді қорғауды қамтамасыз ететін ішкі AES шифрлау алгоритмін пайдаланады.</p>
+      <p>Біздің веб-сайттың әртүрлі мүмкіндіктерімен танысып, Fernet шифрлау схемасымен қамтамасыз етілген жақсартылған деректерді қорғауды пайдаланыңыз!</p>
+      <ul>
+        <li>Омаров Айбек</li>
+        <li>KAZNU 2023</li>
+        <li><img src="https://www.kaznu.kz/Content/kaznu/img/others/logo.png" alt="Website Logo" class="centerized-image"></li>
+    </ul>
+    </div>
+    </body>
+  </html>
+  
+
+{% endblock %}

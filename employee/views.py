@@ -94,3 +94,6 @@ def decrypt(request):
 
     else:
         return render(request, 'decrypt.html')
+
+def main(request):
+    return render(request, 'main.html')
